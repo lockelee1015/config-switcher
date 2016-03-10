@@ -1,0 +1,14 @@
+{
+  "name": "config-switcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin":{"config-switcher":"./app.js"},
+  "author": "locke_lee",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.2",
+    "line-reader": "^0.3.0",
+    "minimist": "^1.2.0"
+  }
+}
