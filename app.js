@@ -82,12 +82,8 @@ function recordLine(line){
  */
 function getConfig(line) {
     var start = line.indexOf("#(")+2
-    console.log(line)
-    console.log(start)
     var end = line.indexOf(")")
-    console.log(end)
     var config = line.substring(start, end)
-    console.log(config)
     return config
 }
 
