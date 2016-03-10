@@ -1,6 +1,11 @@
 # config-switcher
 use command to switch java.properties
 
+###how to install  
+```
+npm install -g config-switcher
+```
+
 ###for example  
 
 this is a java properties file  `jdbc.properties`
