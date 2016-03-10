@@ -26,7 +26,7 @@ sql.dialect=oracle
 You need use `#(config-name)` to split the different config  
 then open your terminal
 ```
-  jfw-config -f jdbc -c dev
+  config-switcher -f jdbc -c dev
 ```
 then the part dev will be uncommented and the other will be commented
 
