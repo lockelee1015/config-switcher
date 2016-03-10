@@ -1,4 +1,4 @@
-# jfw-config
+# config-switcher
 use command to switch java.properties
 
 ###for example  
