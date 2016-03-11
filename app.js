@@ -65,7 +65,7 @@ function readProperties(filename, config) {
             if (err) throw err
             fs.writeFile(filename,result,function(err){
                 if(err) throw err
-                console.log("修改配置成功")
+                console.log("switch success!")
             })
         })
     })
