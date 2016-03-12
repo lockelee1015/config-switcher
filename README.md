@@ -36,3 +36,11 @@ all the k-v below `#()` will not be affect
 `-c` is the config name you wanna to switch
 
 welcome to issue and pr.
+
+###release note
+
+###v1.1.0
+Now you can switch config for the all directory
+```
+    config-switcher -d DIR -c CONFIG
+```
