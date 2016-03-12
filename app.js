@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 var args = require('minimist')(process.argv.slice(2))
-var lineReader = require('line-reader')
 var fs = require('fs')
-var result = ''
+var package = require('./package.json')
+var configOneFile = require('./configOneFile')
+
+console.log(args)
 
 if (args.v || args.version) {
-    console.log('v1.0.0')
+    console.log(package.version)
+}
+
+if (args.d){
+    var dir = args.d
+    files = fs.readdirSync(dir)
+    console.log(files)
+    files.forEach(function(filename){configOneFile(dir+"/"+filename,args.c)})
 }
 
 if (args.f) {
@@ -26,89 +35,3 @@ if(args.h||args.help){
     console.log("jfw-config -f jdf -c jfw")
 }
 
-function configOneFile(){
-    readProperties(filename, config)
-}
-
-
-/**
- * 读取一个配置文件
- * @param filename
- * @param config
- */
-function readProperties(filename, config) {
-    lineReader.open(filename, function (err, reader) {
-        if (err) throw err
-        var currentConfig = '@'
-        while (reader.hasNextLine()) {
-            reader.nextLine(function (err, line) {
-                if (err)throw err;
-                flag = true
-                if (flag) {
-                    if (line.indexOf("#(") > -1) {
-                        currentConfig = getConfig(line)
-                        recordLine(line)
-                    } else if (config === currentConfig) {
-                        recordLine(uncommentLine(line))
-                    } else {
-                        if (currentConfig != '') {
-                            recordLine(commentLine(line))
-                        }else{
-                            recordLine(line)
-                        }
-                    }
-                }
-            })
-        }
-        //console.log(result)
-        reader.close(function (err) {
-            if (err) throw err
-            fs.writeFile(filename,result,function(err){
-                if(err) throw err
-                console.log("switch success!")
-            })
-        })
-    })
-}
-
-function recordLine(line){
-    result = result+line+'\n'
-}
-
-/**
- * 获取当前行的配置名
- * @param line
- * @returns {string}
- */
-function getConfig(line) {
-    var start = line.indexOf("#(")+2
-    var end = line.indexOf(")")
-    var config = line.substring(start, end)
-    return config
-}
-
-/**
- * 注释一行
- * @param line
- * @returns {*}
- */
-function commentLine(line) {
-    if (line.indexOf("#") == 0) {
-        return line
-    } else {
-        return "#" + line
-    }
-}
-
-/**
- * 解开一行注释
- * @param line
- * @returns {*}
- */
-function uncommentLine(line) {
-    if(line.indexOf('#')==0){
-        return uncommentLine(line.substring(1))
-    }else{
-        return line
-    }
-}
