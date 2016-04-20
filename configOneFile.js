@@ -2,7 +2,7 @@ var lineReader = require('line-reader')
 var fs = require('fs')
 
 
-function configOneFile(filename, config){
+function configOneFile(filename, config) {
     readProperties(filename, config)
 }
 
@@ -24,14 +24,14 @@ function readProperties(filename, config) {
                 if (flag) {
                     if (line.indexOf("#(") > -1) {
                         currentConfig = getConfig(line)
-                        result+=recordLine(line)
+                        result += recordLine(line)
                     } else if (config === currentConfig) {
-                        result+=recordLine(uncommentLine(line))
+                        result += recordLine(uncommentLine(line))
                     } else {
                         if (currentConfig != '') {
-                            result+=recordLine(commentLine(line))
-                        }else{
-                            result+=recordLine(line)
+                            result += recordLine(commentLine(line))
+                        } else {
+                            result += recordLine(line)
                         }
                     }
                 }
@@ -39,16 +39,16 @@ function readProperties(filename, config) {
         }
         reader.close(function (err) {
             if (err) throw err
-            fs.writeFile(filename,result,function(err){
-                if(err) throw err
+            fs.writeFile(filename, result, function (err) {
+                if (err) throw err
                 console.log("switch success!")
             })
         })
     })
 }
 
-function recordLine(line){
-    return line+'\n'
+function recordLine(line) {
+    return line + '\n'
 }
 
 /**
@@ -57,7 +57,7 @@ function recordLine(line){
  * @returns {string}
  */
 function getConfig(line) {
-    var start = line.indexOf("#(")+2
+    var start = line.indexOf("#(") + 2
     var end = line.indexOf(")")
     var config = line.substring(start, end)
     return config
@@ -82,9 +82,9 @@ function commentLine(line) {
  * @returns {*}
  */
 function uncommentLine(line) {
-    if(line.indexOf('#')==0){
+    if (line.indexOf('#') == 0) {
         return uncommentLine(line.substring(1))
-    }else{
+    } else {
         return line
     }
 }
