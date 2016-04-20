@@ -11,7 +11,7 @@ if (args.repo) {
 }
 
 if (args.a || args.auto) {
-    //读取configrc.json文件
+    //读取.configrc文件
     fs.readFile('.configrc', function (err, data) {
         if (err) {
             console.log("该项目没有.configrc文件")
@@ -51,6 +51,8 @@ if (args.h || args.help) {
     console.log("    f     你要修改的配置文件(省略.properties)")
     console.log("    c     你选择的配置组名")
     console.log("如果要修改某一个配置文件,比如jdf.properties选择jfw配置组")
-    console.log("jfw-config -f jdf -c jfw")
+    console.log("config-switcher -f jdf -c jfw")
+    console.log("如果要远程获取配置")
+    console.log("config-switcher -a")
 }
 

@@ -1,7 +1,6 @@
 var fetch = require('node-fetch')
 var fs = require('fs')
 
-
 function service(serviceId, method, param) {
     return new Promise(function (resolve, reject) {
         readRepo()
@@ -22,11 +21,11 @@ function service(serviceId, method, param) {
                 })
             })
     })
-
 }
 
 function readRepo() {
     var dir
+    //osx
     if (process.platform === 'darwin') {
         dir = `${process.env.HOME}/.repo/repo.json`
     }
@@ -52,8 +51,6 @@ function readRepo() {
             }
         })
     })
-
-
 }
 
 module.exports = service

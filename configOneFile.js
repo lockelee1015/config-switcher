@@ -1,11 +1,9 @@
 var lineReader = require('line-reader')
 var fs = require('fs')
 
-
 function configOneFile(filename, config) {
     readProperties(filename, config)
 }
-
 
 /**
  * 读取一个配置文件
@@ -88,6 +86,5 @@ function uncommentLine(line) {
         return line
     }
 }
-
 
 module.exports = configOneFile
