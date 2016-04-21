@@ -95,7 +95,7 @@ you could receive a json data looks just like
 }
 ```
 
-the json data will be written into relative `.properties` files 
+the content of json data will be written into relative `.properties` files 
 according to .configrc file automatically.
 
 ###release note
