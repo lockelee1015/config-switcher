@@ -95,12 +95,12 @@ you could receive a json data looks just like
 }
 ```
 
-the json data will be written into relative .properties files 
+the json data will be written into relative `.properties` files 
 according to .configrc file automatically.
 
 ###release note
 
-###v1.1.0
+###v1.2.0
 Now you can switch config for the all directory, alternatively you can choose to fetch properties from database
 ```
     config-switcher -d DIR -c CONFIG
