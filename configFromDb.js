@@ -29,7 +29,7 @@ function writeOneProperties(filePath, configDetail, groupName) {
 function getConfigDetailText(configDetail) {
     var text = ``
     for (var line of configDetail) {
-        text = `${text} \n#${line.description} \n${line.key}=${line.value}`
+        text = `${text}\n#${line.description}\n${line.key}=${line.value}`
     }
     return text
 }
