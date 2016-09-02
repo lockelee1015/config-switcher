@@ -1,4 +1,3 @@
-var lineReader = require('line-reader')
 var fs = require('fs')
 
 function configOneFile(filename, config) {
@@ -11,14 +10,13 @@ function configOneFile(filename, config) {
  * @param config
  */
 function readProperties(filename, config) {
+    console.log(filename)
+    var currentConfig = '@'
     var result = ''
-    lineReader.open(filename, function (err, reader) {
-        if (err) throw err
-        var currentConfig = '@'
-        while (reader.hasNextLine()) {
-            reader.nextLine(function (err, line) {
-                if (err)throw err;
-                flag = true
+    fs.readFile(filename,'utf-8',function(err,data){
+        var list = data.split('\n')
+        list.map(function(line){
+            flag = true
                 if (flag) {
                     if (line.indexOf("#(") > -1) {
                         currentConfig = getConfig(line)
@@ -33,15 +31,11 @@ function readProperties(filename, config) {
                         }
                     }
                 }
-            })
-        }
-        reader.close(function (err) {
-            if (err) throw err
-            fs.writeFile(filename, result, function (err) {
+        })
+        fs.writeFile(filename, result, function (err) {
                 if (err) throw err
                 console.log("switch success!")
             })
-        })
     })
 }
 

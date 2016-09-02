@@ -1,6 +1,6 @@
 {
   "name": "config-switcher",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "",
   "main": "app.js",
   "bin": {
@@ -13,5 +13,7 @@
     "line-reader": "^0.3.0",
     "minimist": "^1.2.0",
     "node-fetch": "^1.5.1"
-  }
+  },
+  "_from": "config-switcher@1.4.0",
+  "_resolved": "http://registry.npm.taobao.org/config-switcher/download/config-switcher-1.4.0.tgz"
 }
