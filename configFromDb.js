@@ -19,7 +19,7 @@ function writeProperties(configMap, data) {
 }
 
 function writeOneProperties(filePath, configDetail, groupName) {
-    fs.writeFile(path.join(__dirname, filePath), getConfigDetailText(configDetail), function (err) {
+    fs.writeFile(path.join(filePath), getConfigDetailText(configDetail), function (err) {
         if (err) throw err
         var tips = `配置${groupName}.properties成功`
         console.log(tips);
