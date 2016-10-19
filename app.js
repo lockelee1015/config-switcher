@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var args = require('minimist')(process.argv.slice(2))
 var fs = require('fs')
-var package = require('./package.json')
+var package = require('./package.json');
 var configOneFile = require('./configOneFile')
 var configFromDb = require('./configFromDb')
 var writeRepoInRootDir = require('./writeRepoInRootDir')
