@@ -5,6 +5,7 @@ var package = require('./package.json');
 var configOneFile = require('./configOneFile')
 var configFromDb = require('./configFromDb')
 var writeRepoInRootDir = require('./writeRepoInRootDir')
+var loadProjectConfig = require('./loadProjectConfig')
 
 if (args.repo) {
     writeRepoInRootDir(args.repo)
@@ -34,7 +35,7 @@ if (args.d) {
     })
 }
 
-if (args.f) {
+if (args.f || args.file) {
     var filename = args.f + ".properties"
     if (args.c && typeof (args.c) === 'string') {
         var config = args.c
@@ -44,12 +45,17 @@ if (args.f) {
     }
 }
 
+if (args.l || args.load) {
+    loadProjectConfig(process.cwd())
+}
+
 if (args.h || args.help) {
-    console.log("    repo  设置远程调用地址")
-    console.log("    a     自动从数据库获取配置信息")
-    console.log("    v     查看版本")
-    console.log("    f     你要修改的配置文件(省略.properties)")
-    console.log("    c     你选择的配置组名")
+    console.log("    repo        设置远程调用地址")
+    console.log("    a(auto)     自动从数据库获取配置信息")
+    console.log("    v(version)  查看版本")
+    console.log("    f(file)     你要修改的配置文件(省略.properties)")
+    console.log("    c(config)   你选择的配置组名")
+    console.log("    l(load)     加载当前路径下的配置文件生成.configrc和配置")
     console.log("如果要修改某一个配置文件,比如jdf.properties选择jfw配置组")
     console.log("config-switcher -f jdf -c jfw")
     console.log("如果要远程获取配置")
