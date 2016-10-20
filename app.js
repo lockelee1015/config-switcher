@@ -6,6 +6,7 @@ var configOneFile = require('./configOneFile')
 var configFromDb = require('./configFromDb')
 var writeRepoInRootDir = require('./writeRepoInRootDir')
 var loadProjectConfig = require('./loadProjectConfig')
+console.log('args', args)
 
 if (args.repo) {
     writeRepoInRootDir(args.repo)
@@ -50,6 +51,7 @@ if (args.l || args.load) {
 }
 
 if (args.h || args.help) {
+    console.log("config-switcher:" + package.version)
     console.log("    repo        设置远程调用地址")
     console.log("    a(auto)     自动从数据库获取配置信息")
     console.log("    v(version)  查看版本")
@@ -61,4 +63,3 @@ if (args.h || args.help) {
     console.log("如果要远程获取配置")
     console.log("config-switcher -a")
 }
-

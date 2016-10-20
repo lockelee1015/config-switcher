@@ -25,11 +25,19 @@ function writeRepoInRootDir(repo) {
     }
 
     dir = `${dir}/repo.json`
-    fs.writeFile(dir, `{"repo":"${repo}"}`, function (err) {
-        if (err) throw err
-        console.log('配置远程调用地址成功!')
-    })
 
+    if (typeof repo === 'boolean') {
+        // var file = fs.readSync(dir).toString()
+        // cosole.log(file)
+        var repoStr = fs.readFileSync(dir)
+        var repo = JSON.parse(repoStr)
+        console.log('当前获取配置地址为',repo.repo)
+    } else {
+        fs.writeFile(dir, `{"repo":"${repo}"}`, function (err) {
+            if (err) throw err
+            console.log('配置远程调用地址成功!')
+        })
+    }
 }
 
 module.exports = writeRepoInRootDir
