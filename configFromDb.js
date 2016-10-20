@@ -4,6 +4,7 @@ var service = require('./jfwService')
 var path = require('path')
 
 function configFromDb(configrc) {
+    console.log("项目名称:"+configrc.projectName)
     service('JFWCONFIG', 'getConfig', configrc)
         .then(function (res) {
             writeProperties(configrc.config_map, res.result)
@@ -11,6 +12,7 @@ function configFromDb(configrc) {
 }
 
 function writeProperties(configMap, data) {
+    console.log("已获取配置===>准备修改配置")
     for (var groupName in configMap) {
         var filePath = configMap[groupName]
         var configDetail = data[groupName]
