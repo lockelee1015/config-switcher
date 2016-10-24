@@ -1,0 +1,110 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/Lee/.nvm/versions/node/v6.0.0/bin/node',
+1 verbose cli   '/Users/Lee/.nvm/versions/node/v6.0.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.6
+3 info using node@v6.0.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/Lee/github/config-switcher',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/Lee/.npm/config-switcher/1.4.5/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/Lee/.npm correctMkdir not in flight; initializing
+10 verbose makeDirectory /Users/Lee/.npm creation not in flight; initializing
+11 silly makeDirectory /Users/Lee/.npm uid: 501 gid: 20
+12 info lifecycle config-switcher@1.4.5~prepublish: config-switcher@1.4.5
+13 silly lifecycle config-switcher@1.4.5~prepublish: no script for prepublish, continuing
+14 verbose tar pack [ '/Users/Lee/.npm/config-switcher/1.4.5/package.tgz',
+14 verbose tar pack   '/Users/Lee/github/config-switcher' ]
+15 verbose tarball /Users/Lee/.npm/config-switcher/1.4.5/package.tgz
+16 verbose folder /Users/Lee/github/config-switcher
+17 verbose addLocalTarball adding from inside cache /Users/Lee/.npm/config-switcher/1.4.5/package.tgz
+18 verbose correctMkdir /Users/Lee/.npm correctMkdir not in flight; initializing
+19 silly cache afterAdd config-switcher@1.4.5
+20 verbose afterAdd /Users/Lee/.npm/config-switcher/1.4.5/package/package.json not in flight; writing
+21 verbose correctMkdir /Users/Lee/.npm correctMkdir not in flight; initializing
+22 verbose afterAdd /Users/Lee/.npm/config-switcher/1.4.5/package/package.json written
+23 silly publish { name: 'config-switcher',
+23 silly publish   version: '1.4.5',
+23 silly publish   description: 'use command to switch java.properties',
+23 silly publish   main: 'app.js',
+23 silly publish   bin: { 'config-switcher': './app.js' },
+23 silly publish   author: { name: 'locke_lee' },
+23 silly publish   license: 'MIT',
+23 silly publish   dependencies:
+23 silly publish    { fs: '0.0.2',
+23 silly publish      'line-reader': '^0.3.0',
+23 silly publish      minimist: '^1.2.0',
+23 silly publish      'node-fetch': '^1.5.1' },
+23 silly publish   _from: '.',
+23 silly publish   _resolved: 'http://registry.npm.taobao.org/config-switcher/download/config-switcher-1.4.0.tgz',
+23 silly publish   readme: '# config-switcher\nuse command to switch java.properties\n\nuse command to fetch java.properties from remote database\n\n###how to install  \n```\nnpm install -g config-switcher\n```\n\n###for example  \n\n####switch java.properties\n\nthis is a java properties file  `jdbc.properties`\n\n```\n#(dev)\n#jdbc.url=jdbc:oracle:thin:@192.168.1.8:1521:ORCL\n#(test)\njdbc.url=jdbc:oracle:thin:@192.168.1.58:1521:ORCL\n#()\njdbc.username=username\njdbc.password=pwd\njdbc.maxConnectionsPerPartition=10\njdbc.partitionCount=3\nsql.sqlRootFile=conf/sql\nsql.dialect=oracle\n```\nYou need use `#(config-name)` to split the different config  \nthen open your terminal\n```\n  config-switcher -f jdbc -c dev\n```\nthen the part dev will be uncommented and the other will be commented\n\n`#()` means stop to switch  \nall the k-v below `#()` will not be affect\n`-f` is the file you wanna to switch.do not need at `.properties`\n`-c` is the config name you wanna to switch\n\nwelcome to issue and pr.\n\n####fetch java.properties from database\nfirstly, you need to ensure that `.configrc` is actually existed in  the root path of you project. this is an example of `.configrc` \n\n```\n{\n    "project_name":"ai",\n    "config_map":{\n        "jdf":"src/conf/jdf.properties",\n        "jfwai":"src/conf/plugin/jfwai.properties",\n        "jfwailog":"src/conf/plugin/jfwailog.properties"\n    }\n}\n```\nthen use command \n```\n  config-switcher -a \n```\nor \n```\n  config-switcher --auto\n```\nyou could receive a json data looks just like\n\n```\n{\n\t"jdf":[\n\t\t{\n\t\t\t"key":"jdbc.url"\n\t\t\t"value":"jdbc:oracle:thin:@192.168.88.168:1521/HIPDB"\n\t\t},\n\t\t{\n\t\t\t"key":"jdbc.driverClassName"\n\t\t\t"value":"oracle.jdbc.driver.OracleDriver"\n\t\t}\n\t\t...\n\t],\n\t"jfwai":[\n\t\t{\n\t\t\t"key":"jfwai.jdbc.jfwaidata.url"\n\t\t\t"value":"jdbc:oracle:thin:@192.168.88.168:1521/HIPDB"\n\t\t},\n\t\t...\n\t],\n\t"jfwailog":[\n\t\t{\n\t\t\t"key":"jfwailog.mongo.db.host"\n\t\t\t"value":"192.168.82.11:27017"\n\t\t},\n\t\t...\n\t]\n\t\n}\n```\n\nthe content of json data will be written into relative `.properties` files \naccording to .configrc file automatically.\n\n###release note\n\n###v1.2.0\nNow you can switch config for the all directory, alternatively you can choose to fetch properties from database\n```\n    config-switcher -d DIR -c CONFIG\n```',
+23 silly publish   readmeFilename: 'README.md',
+23 silly publish   gitHead: '3802c309e8e28ed83f0cda3bc50f86f69ffb5875',
+23 silly publish   _id: 'config-switcher@1.4.5',
+23 silly publish   scripts: {},
+23 silly publish   _shasum: '22c797e2c61e8e8c14cb8189aa75f60e0c4153bb' }
+24 verbose getPublishConfig undefined
+25 silly mapToRegistry name config-switcher
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry data Result {
+28 silly mapToRegistry   raw: 'config-switcher',
+28 silly mapToRegistry   scope: null,
+28 silly mapToRegistry   name: 'config-switcher',
+28 silly mapToRegistry   rawSpec: '',
+28 silly mapToRegistry   spec: 'latest',
+28 silly mapToRegistry   type: 'tag' }
+29 silly mapToRegistry uri https://registry.npmjs.org/config-switcher
+30 verbose publish registryBase https://registry.npmjs.org/
+31 silly publish uploading /Users/Lee/.npm/config-switcher/1.4.5/package.tgz
+32 verbose request uri https://registry.npmjs.org/config-switcher
+33 verbose request sending authorization for write operation
+34 info attempt registry request try #1 at 12:30:44
+35 verbose request using bearer token for auth
+36 verbose request id 4cd21a297dc66520
+37 http request PUT https://registry.npmjs.org/config-switcher
+38 http 403 https://registry.npmjs.org/config-switcher
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=300',
+39 verbose headers   'content-length': '95',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Mon, 24 Oct 2016 04:30:48 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-lcy1139-LCY',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1477283447.554884,VS0,VE1330',
+39 verbose headers   vary: 'Accept-Encoding' }
+40 verbose request invalidating /Users/Lee/.npm/registry.npmjs.org/config-switcher on PUT
+41 error publish Failed PUT 403
+42 verbose stack Error: "You cannot publish over the previously published version 1.4.5." : config-switcher
+42 verbose stack     at makeError (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+42 verbose stack     at CachingRegistryClient.<anonymous> (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+42 verbose stack     at Request._callback (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+42 verbose stack     at Request.self.callback (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:199:22)
+42 verbose stack     at emitTwo (events.js:106:13)
+42 verbose stack     at Request.emit (events.js:191:7)
+42 verbose stack     at Request.<anonymous> (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+42 verbose stack     at emitOne (events.js:101:20)
+42 verbose stack     at Request.emit (events.js:188:7)
+42 verbose stack     at IncomingMessage.<anonymous> (/Users/Lee/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:963:12)
+43 verbose statusCode 403
+44 verbose pkgid config-switcher
+45 verbose cwd /Users/Lee/github/config-switcher
+46 error Darwin 16.0.0
+47 error argv "/Users/Lee/.nvm/versions/node/v6.0.0/bin/node" "/Users/Lee/.nvm/versions/node/v6.0.0/bin/npm" "publish"
+48 error node v6.0.0
+49 error npm  v3.8.6
+50 error code E403
+51 error "You cannot publish over the previously published version 1.4.5." : config-switcher
+52 error If you need help, you may report this error at:
+52 error     <https://github.com/npm/npm/issues>
+53 verbose exit [ 1, true ]
